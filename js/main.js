@@ -23,9 +23,11 @@ class Calculator {
                     break;
                 case '.':
                     if ( this.sign == '') {
-                        this.firstNumber == '0' || this.firstNumber == '' ? this.firstNumber = '0.' : this.firstNumber += '.' 
+                        // this.firstNumber == '0' || this.firstNumber == '' ? this.firstNumber = '0.' : this.firstNumber += '.' 
+                        this.firstNumber = this.decimalSeparator(this.firstNumber)
                     } else {
-                        this.secondNumber == '0' || this.secondNumber == '' ? this.secondNumber = '0.' : this.secondNumber += '.' 
+                        // this.secondNumber == '0' || this.secondNumber == '' ? this.secondNumber = '0.' : this.secondNumber += '.' 
+                        this.secondNumber = this.decimalSeparator(this.secondNumber);
                     }
                     break;
                 case 'AC':
@@ -45,11 +47,14 @@ class Calculator {
                     break;
                 
                 default:
-                    this.sign == '' ? this.firstNumber += e.target.textContent : this.secondNumber += e.target.textContent; 
+                    // this.sign == '' ? this.firstNumber += e.target.textContent : this.secondNumber += e.target.textContent; 
+                    this.sign == '' ? this.firstNumber = this.inputUserNumber(this.firstNumber,e.target.textContent) : this.secondNumber = this.inputUserNumber(this.secondNumber,e.target.textContent) 
                     break;
             }
     
             this.input.value = this.firstNumber + this.sign + this.secondNumber;
+            this.input.value == '' ?  this.input.value = '0' : this.input.value = this.input.value;
+
         }
     }
 
@@ -78,8 +83,29 @@ class Calculator {
         }
     }
 
+    decimalSeparator(num){
+        // console.log(/\./.test(num));
+        if (!/\./.test(num)){
+            num == '0' || num == '' ? num = '0.' : num += '.'
+        }
+
+        return num
+    }
+
+    inputUserNumber(oldNum, userNum){
+        if (oldNum == '0' && userNum == '0') {
+            return oldNum;  
+        } else if (oldNum == '0' && userNum !== '0'){
+            return userNum;
+        } else {
+            return oldNum += userNum;
+        }
+    }
+
+
 }
 
 const calculator = new Calculator();
 // const num =  +'123.12' + 10
 // console.log(typeof(num), ` ${num}`);
+// console.log(/213/.test('123123213'));
