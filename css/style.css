@@ -13,6 +13,7 @@
     top: 50px;
     left: calc(50% - (220px / 2));
     border-radius: 10px;
+    background-color: rgb(236, 236, 236);
 }
 
 .calculator__input {
@@ -38,9 +39,10 @@
     text-align: center;
     display: inline;
     border-radius: 5px;
-    box-shadow: 0px 3px 0px 0px #ccc;
+    box-shadow: 0px 3px 0px 0px rgb(153, 145, 145);
     outline: none;
     transition: none;
+    background-color: rgb(223, 223, 223);
 }
 
 .calculator__button:active {
@@ -56,4 +58,9 @@
 
 .calculator__battonZiro {
     width: 85px;
+}
+
+.calculator__redButton{
+    color: white;
+    background-color: rgb(221, 50, 20);
 }
